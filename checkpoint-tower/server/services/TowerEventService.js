@@ -23,6 +23,7 @@ class TowerEventService {
   async editEvent(eventId, body, userId) {
     const event = await this.getOne(eventId)
     if (event.creatorId != userId) throw new Forbidden('You arent allowed to edit this event nacho event')
+    if (event.isCanceled == true) throw new BadRequest(`${event.name} is already canceled`)
     event.name = body.name
     event.description = body.description
     event.isCanceled = !body.isCanceled
@@ -30,6 +31,15 @@ class TowerEventService {
     await event.save()
     return event
   }
+
+  async removeEvent(eventId, userId) {
+    const event = await this.getOne(eventId)
+    if (event.creatorId != userId) throw new Forbidden('nacho event big dawg')
+    event.isCanceled = !event.isCanceled
+    await event.save()
+    return `${event.name} has been canceled`
+  }
+
 }
 
 export const towerEventService = new TowerEventService()
