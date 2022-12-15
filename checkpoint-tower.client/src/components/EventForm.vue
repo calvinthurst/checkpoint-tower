@@ -7,7 +7,7 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <form action="" @submit.prevent="createEvent()" class=" row justify-content-around">
+          <form @submit.prevent="eventForm()" class=" row justify-content-around">
             <div class="mb-2">
               <label for="eventName" class="form-label">Event Name</label>
               <input type="text" class="form-control" id="eventName" v-model="state.name" aria-describedby="eventName">
@@ -61,25 +61,41 @@
 
 <script>
 import { AppState } from '../AppState';
-import { computed, reactive, onMounted, ref } from 'vue';
+import { computed, reactive, onMounted, ref, watchEffect } from 'vue';
 import { logger } from "../utils/Logger.js";
 import Pop from "../utils/Pop.js";
 import { eventService } from "../services/EventService.js";
 import { Modal } from 'bootstrap';
-import { useRouter } from "vue-router";
+import { useRoute, useRouter } from "vue-router";
 export default {
   setup() {
     const state = ref({})
     const router = useRouter()
+    const route = useRoute()
+    watchEffect(() => {
+      if (route.name == 'Events') {
+        state.value = { ...AppState.activeEvent }
+      } else { state.value = {} }
+    })
+    onMounted(() => logger.log(AppState.activeEvent))
     return {
       state,
-      async createEvent() {
+      route,
+      account: computed(() => AppState.account),
+
+      async eventForm() {
         try {
-          const event = await eventService.createEvent(state.value)
-          state.value = {}
-          Modal.getOrCreateInstance('#exampleModal').hide()
-          router.push({ name: 'Events', params: { eventId: event.id } })
-        } catch (error) {
+          if (route.name == 'Events') {
+            await eventService.editEvent(state.value)
+            Modal.getOrCreateInstance('#exampleModal').hide()
+          } else {
+            const event = await eventService.createEvent(state.value)
+            state.value = {}
+            Modal.getOrCreateInstance('#exampleModal').hide()
+            router.push({ name: 'Events', params: { eventId: event.id } })
+          }
+        }
+        catch (error) {
           logger.log(error)
           Pop.error(error)
         }

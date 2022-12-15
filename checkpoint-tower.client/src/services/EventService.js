@@ -1,6 +1,8 @@
 import { AppState } from "../AppState.js"
 import { logger } from "../utils/Logger.js"
 import { api } from "./AxiosService.js"
+import { format, render, cancel, register } from 'timeago.js';
+
 
 
 class EventService {
@@ -11,6 +13,7 @@ class EventService {
   }
   async getEventById(eventId) {
     const res = await api.get(`api/events/${eventId}`)
+    res.data.startDate = format(new Date(res.data.startDate))
     AppState.activeEvent = res.data
     // logger.log('[active event]', AppState.activeEvent)
   }

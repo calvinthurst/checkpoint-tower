@@ -1,8 +1,17 @@
 <template>
   <div class="row container-fluid">
-    <div class="col-11 border rounded p-3 d-flex mx-2 my-5 seats">
+    <div class="col-11 border rounded p-3 d-flex mx-2 my-3 seats">
       <div class="col-6 text-info opacity-100 fs-3 ">
         Get ahead of the scalpers. Reserve your seat now with real events for real people.
+      </div>
+    </div>
+    <div class="col-11">
+      <div class="row justify-content-around">
+        <button v-if="account.id" type="button" class="col-3 btn bg-dark elevation-3 text-body-bg m-2"
+          data-bs-toggle="modal" data-bs-target="#exampleModal">
+          Create Event
+        </button>
+        <EventForm />
       </div>
     </div>
     <div class="row">
@@ -36,6 +45,7 @@ import Pop from "../utils/Pop.js";
 import { eventService } from '../services/EventService.js';
 import { onMounted } from "vue";
 import { computed, ref } from "@vue/reactivity";
+import EventForm from "../components/EventForm.vue";
 
 
 export default {
@@ -64,7 +74,7 @@ export default {
       })
     };
   },
-  components: { EventCard }
+  components: { EventCard, EventForm }
 }
 </script>
 

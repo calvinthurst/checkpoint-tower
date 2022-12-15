@@ -1,16 +1,11 @@
 <template>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-primary px-3">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary px-3 justify-content-around">
     <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
       <div class="d-flex flex-column align-items-center">
         <img class="bg-blank" alt="logo" src="../assets/img/Logo.png" height="45" />
       </div>
     </router-link>
     <!-- LOGIN COMPONENT HERE -->
-    <button v-if="account" type="button" class="btn bg-dark elevation-3 text-primary mx-4" data-bs-toggle="modal"
-      data-bs-target="#exampleModal">
-      Create Event
-    </button>
-    <EventForm />
   </nav>
   <div class="row justify-content-end m-0 ">
 
