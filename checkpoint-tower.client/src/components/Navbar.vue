@@ -6,6 +6,11 @@
       </div>
     </router-link>
     <!-- LOGIN COMPONENT HERE -->
+    <button v-if="account" type="button" class="btn bg-dark elevation-3 text-primary mx-4" data-bs-toggle="modal"
+      data-bs-target="#exampleModal">
+      Create Event
+    </button>
+    <EventForm />
   </nav>
   <div class="row justify-content-end m-0 ">
 
@@ -18,11 +23,20 @@
 
 <script>
 import Login from './Login.vue'
+import ModalContent from "../components/ModalContent.vue";
+import { AppState } from "../AppState.js";
+import { computed, reactive, onMounted } from 'vue';
+import EventForm from "./EventForm.vue";
+
+
+
 export default {
   setup() {
-    return {}
+    return {
+      account: computed(() => AppState.account)
+    }
   },
-  components: { Login }
+  components: { Login, EventForm }
 }
 </script>
 
@@ -30,7 +44,7 @@ export default {
 .bg-navbar {
   height: 102vh;
   position: fixed;
-  transform: translateY(-8vh);
+  transform: translateY(-11vh);
   background: #C4DACF;
 }
 

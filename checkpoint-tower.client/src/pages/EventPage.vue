@@ -22,7 +22,6 @@ import EventCard from "../components/EventCard.vue";
 export default {
   setup() {
     const route = useRoute();
-    const events = AppState.activeEvent
     async function getEventById() {
       try {
         await eventService.getEventById(route.params.eventId);

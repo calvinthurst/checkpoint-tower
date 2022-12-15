@@ -4,7 +4,7 @@
       <div class="text-grey cover-img rounded">
         <div class="bg-tint col-12 text-center rounded-top align-items-end">
           <h3>{{ event.name }}</h3>
-          <p>{{ event.description.slice(0, 50) }}</p>
+          <!-- <p>{{ event.description.slice(0, 50) }}</p> -->
           <p v-if="event.isCanceled || event.capacity == 0" class="event-gone align-self-end"> event is canceled</p>
           <p v-if="event.capacity == 0" class="event-gone align-self-end"> event is sold out</p>
         </div>

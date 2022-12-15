@@ -5,7 +5,7 @@
   <main>
     <router-view />
   </main>
-  <footer class="bg-primary text-light fs-4 m-0">
+  <footer class="bg-primary col-11 text-light fs-4 m-0 p-2 text-center">
     Made for big ballers
   </footer>
 </template>

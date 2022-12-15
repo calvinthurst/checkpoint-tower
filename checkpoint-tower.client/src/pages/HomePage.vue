@@ -7,16 +7,19 @@
     </div>
     <div class="row">
       <div class="col-11 bg-secondary p-3 rounded d-flex justify-content-around ms-3">
-        <button @click="filterBy = ''" class="btn rounded-pill bg-info elevation-3">All</button>
-        <button @click="filterBy = 'sport'" class="btn rounded-pill bg-info elevation-3">Sports</button>
-        <button @click="filterBy = 'concert'" class="btn rounded-pill bg-info elevation-3">Concerts</button>
-        <button @click="filterBy = 'convention'" class="btn rounded-pill bg-info elevation-3">Convention</button>
-        <button @click="filterBy = 'digital'" class="btn rounded-pill bg-info elevation-3">Digital</button>
+        <button @click="filterBy = ''" class="btn rounded-pill bg-dark  text-secondary elevation-3">All</button>
+        <button @click="filterBy = 'sport'" class="btn rounded-pill bg-dark text-secondary elevation-3">Sports</button>
+        <button @click="filterBy = 'concert'"
+          class="btn rounded-pill bg-dark text-secondary elevation-3">Concerts</button>
+        <button @click="filterBy = 'convention'"
+          class="btn rounded-pill bg-dark  text-secondary elevation-3">Convention</button>
+        <button @click="filterBy = 'digital'"
+          class="btn rounded-pill bg-dark  text-secondary elevation-3">Digital</button>
       </div>
     </div>
     <div class="col-11 ">
       <div class="row justify-content-around">
-        <div v-for="e in events" class="col-4 mt-3">
+        <div v-for="e in events" class="col-md-4 mt-3 ">
           <EventCard :event="e" />
         </div>
       </div>
