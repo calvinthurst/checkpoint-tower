@@ -10,9 +10,9 @@ class TowerEventService {
     return events
   }
 
-  async getOne(id) {
-    const event = await dbContext.TowerEvent.findById(id).populate('creator')
-    if (!event) throw new BadRequest(`No event at that id ${id}`)
+  async getOne(eventId) {
+    const event = await dbContext.TowerEvent.findById(eventId).populate('creator')
+    if (!event) throw new BadRequest(`No event at that id ${eventId}`)
     return event
   }
   async createEvent(body) {
