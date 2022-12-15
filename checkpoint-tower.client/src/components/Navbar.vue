@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-3">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary px-3">
     <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
       <div class="d-flex flex-column align-items-center">
         <img class="bg-blank" alt="logo" src="../assets/img/Logo.png" height="45" />
@@ -28,9 +28,13 @@ export default {
 
 <style scoped>
 .bg-navbar {
-  min-height: 100vh;
-  background-image: linear-gradient(rgb(61, 61, 61), rgba(61, 61, 61, 0.623));
+  height: 102vh;
+  position: fixed;
+  transform: translateY(-8vh);
+  background: #C4DACF;
 }
+
+
 
 a:hover {
   text-decoration: none;

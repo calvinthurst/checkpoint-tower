@@ -1,26 +1,26 @@
 <template>
   <span class="navbar-text m-2">
     <router-link :to="{ name: 'Home' }">
-      <div class="text-center mb-2">
+      <div class="text-center mb-2  text-dark fw-bold">
         Home
       </div>
     </router-link>
-    <button class="btn selectable text-success lighten-30 text-uppercase my-2 my-lg-0 mb-2" @click="login"
+    <button class="btn selectable lighten-30 text-uppercase my-2 my-lg-0 mb-2  text-dark" @click="login"
       v-if="!user.isAuthenticated">
       Login
     </button>
     <div v-else>
-      <div v-if="account.picture || user.picture" class="text-center mb-2">
+      <div v-if="account.picture || user.picture" class="text-center my-2">
         <img :src="account.picture || user.picture" alt="account photo" height="40" class="rounded" />
       </div>
     </div>
-    <div class="mb-2">
+    <div class="">
       <router-link :to="{ name: 'Account' }">
-        <div class="text-center border border-light rounded">
+        <div class="text-center  rounded my-3 text-dark fw-bold">
           Manage Account
         </div>
       </router-link>
-      <div class=" text-danger selectable text-center mb-2" @click="logout">
+      <div class=" text-light selectable text-center mb-2 fw-bold" @click="logout">
         <i class="mdi mdi-logout"></i>
         logout
       </div>
