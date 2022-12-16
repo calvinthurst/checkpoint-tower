@@ -7,7 +7,7 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <form @submit.prevent="eventForm()" class=" row justify-content-around">
+          <form @submit.prevent="eventForm(state.id)" class=" row justify-content-around">
             <div class="mb-2">
               <label for="eventName" class="form-label">Event Name</label>
               <input type="text" class="form-control" id="eventName" v-model="state.name" aria-describedby="eventName">
@@ -82,11 +82,12 @@ export default {
       state,
       route,
       account: computed(() => AppState.account),
+      active: computed(() => AppState.activeEvent),
 
-      async eventForm() {
+      async eventForm(eventId) {
         try {
           if (route.name == 'Events') {
-            await eventService.editEvent(state.value)
+            await eventService.editEvent(state.value, eventId)
             Modal.getOrCreateInstance('#exampleModal').hide()
           } else {
             const event = await eventService.createEvent(state.value)

@@ -26,7 +26,6 @@ class TowerEventService {
     if (event.isCanceled == true) throw new BadRequest(`${event.name} is already canceled`)
     event.name = body.name
     event.description = body.description
-    event.isCanceled = !body.isCanceled
     event.type = body.type
     await event.save()
     return event
