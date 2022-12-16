@@ -7,12 +7,17 @@ class TicketService {
   async getTicketsById(eventId) {
     const res = await api.get('api/events/' + eventId + '/tickets')
     AppState.ticket = res.data
-    logger.log('[Tickets for active event]', AppState.ticket)
+    // logger.log('[Tickets for active event]', AppState.ticket)
   }
 
-  async getTicket(eventId) {
+  async createTicket(eventId) {
     const res = await api.post('api/tickets', eventId)
-    logger.log(res.data)
+    AppState.ticket.unshift(res.data)
+  }
+  async deleteTicket(ticketId) {
+    const res = await api.delete('api/tickets/' + ticketId.id)
+    AppState.ticket.filter(t => t.id == ticketId.id)
+    AppState.myTickets = AppState.myTickets.filter(t => t.id == ticketId.id)
   }
 }
 

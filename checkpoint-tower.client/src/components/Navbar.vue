@@ -37,9 +37,8 @@ export default {
 
 <style scoped>
 .bg-navbar {
-  height: 102vh;
+  height: 100vh;
   position: fixed;
-  transform: translateY(-11vh);
   background: #C4DACF;
 }
 

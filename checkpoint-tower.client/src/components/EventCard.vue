@@ -1,5 +1,5 @@
 <template>
-  <div v-if="route.name == 'Home'" class="row container-fluid">
+  <div class="row container-fluid">
     <RouterLink :to="{ name: 'Events', params: { eventId: event.id } }">
       <div class="text-grey cover-img rounded">
         <div class="bg-tint col-12 text-center rounded-top align-items-end">

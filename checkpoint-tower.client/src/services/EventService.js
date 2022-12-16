@@ -17,22 +17,26 @@ class EventService {
     // logger.log('[active event]', AppState.activeEvent)
     // AppState.activeEvent.startDate = format(new Date(AppState.activeEvent.startDate))
   }
+  async getMyEvents(accountId) {
+    const res = await api.get
+  }
   async createEvent(body) {
     const res = await api.post('api/events', body)
     AppState.event.push(res.data)
-    logger.log(res.data)
+    // logger.log(res.data)
     return res.data
   }
   async editEvent(body, eventId) {
     // logger.log(eventId)
     const res = await api.put(`api/events/${eventId}`, body)
+    AppState.activeEvent = res.data
   }
   async cancelEvent(eventId) {
     const res = await api.delete(`api/events/${eventId}`)
     let eventIndex = AppState.event.findIndex(e => e.id == eventId)
     if (eventIndex >= 0) {
       AppState.event.splice(eventIndex, 1)
-      AppState.event = event
+      AppState.event = res.data
     }
     return "canceled event"
   }
