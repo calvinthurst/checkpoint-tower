@@ -7,9 +7,9 @@
         <p>{{ account.email }}</p>
       </div>
     </div>
-    <div class="row">
+    <div class="row text-center">
       <h3 class="mb-3">My Events:</h3>
-      <div v-for="e in myEvent" class="col-4 ">
+      <div v-for="e in myEvent" class="col-4 my-2">
         <EventCard :event="e" />
       </div>
     </div>

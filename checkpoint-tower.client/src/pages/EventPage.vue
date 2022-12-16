@@ -37,9 +37,9 @@
 
         <div class="btn bg-light text-primary  opacity-90" @click="cancelEvent(events.id)">
           <button v-if="account.id == events.creatorId && events.isCanceled == false" type="button"
-            class="btn bg-light text-primary " alt="Cancel Event">Cancel your event here
-            <i class="mdi mdi-cancel "></i>
+            class="btn bg-light text-primary " alt="Cancel Event">Cancel Your Event Here
           </button>
+          <i class="mdi mdi-cancel "></i>
         </div>
       </div>
     </div>
