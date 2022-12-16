@@ -1,6 +1,6 @@
 <template>
   <div class="col-11">
-    <div class="row rounded bg-secondary m-3">
+    <div class="row rounded bg-info m-3 p-2 align-items-top">
       <img class="col-3 my-3" :src="account.picture" alt="" />
       <div class="col-9">
         <h1>Welcome {{ account.name }}</h1>
@@ -8,18 +8,17 @@
       </div>
     </div>
     <div class="row">
-      <h3 class="">My Events:</h3>
+      <h3 class="mb-3">My Events:</h3>
       <div v-for="e in myEvent" class="col-4 ">
         <EventCard :event="e" />
       </div>
     </div>
     <div class="row">
-      <h3 class="">My Tickets:</h3>
+      <h3 class="m-3">My Tickets:</h3>
       <div v-for="t in myTickets" class="col-4 ">
         <TicketCard :ticket="t" />
       </div>
     </div>
-
   </div>
 </template>
 
@@ -54,7 +53,7 @@ export default {
 
 <style scoped>
 img {
-  object-fit: cover;
+  object-fit: contain;
 
 }
 </style>
