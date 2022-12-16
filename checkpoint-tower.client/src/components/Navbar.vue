@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-primary px-3 justify-content-around">
+  <nav class="navbar navbar-expand-lg navbar-dark  bg-body-bg px-3 justify-content-around">
     <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
       <div class="d-flex flex-column align-items-center">
         <img class="bg-blank" alt="logo" src="../assets/img/Logo.png" height="45" />
@@ -37,9 +37,10 @@ export default {
 
 <style scoped>
 .bg-navbar {
-  height: 100vh;
+  height: 110vh;
   position: fixed;
   background: #C4DACF;
+  transform: translateY(-8vh);
 }
 
 
