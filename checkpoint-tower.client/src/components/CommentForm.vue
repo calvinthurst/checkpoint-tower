@@ -1,14 +1,14 @@
 <template>
-  <button class="btn col-2 bg-light elevation-3 text-primary m-2" type="button" data-bs-toggle="collapse"
-    data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+  <button class="btn col-2 bg-light elevation-3 text-black m-2" type="button" data-bs-toggle="collapse"
+    data-bs-target="#collapseCommentForm" aria-expanded="false" aria-controls="collapseCommentForm">
     Create a Comment
   </button>
-  <div class="collapse" id="collapseExample">
+  <div class="collapse" id="collapseCommentForm">
     <div class="card bg-secondary m-3  col-11">
       <div class="mb-3 row justify-content-center">
         <form @submit.prevent="createComment()" action="" class="col-11 align-items-center">
           <label for="body" class="form-label">Comments</label>
-          <textarea name="" id="" class="form-control " v-model="state.body" rows="2"></textarea>
+          <textarea class="form-control " v-model="state.body" rows="2"></textarea>
           <div class="m-2 d-flex align-items-center">
             <input class="form-check-input mx-1" type="checkbox" v-model="state.isAttending"
               id="flexSwitchCheckDefault">
@@ -58,5 +58,9 @@ export default {
 <style lang="scss" scoped>
 .mar {
   margin: auto;
+}
+
+.text-black {
+  color: rgb(36, 36, 36);
 }
 </style>

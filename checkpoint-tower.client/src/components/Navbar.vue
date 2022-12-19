@@ -39,8 +39,8 @@ export default {
 .bg-navbar {
   height: 110vh;
   position: fixed;
-  background: #C4DACF;
-  transform: translateY(-8vh);
+  background: #e2f8ed;
+  transform: translateY(-11vh);
 }
 
 

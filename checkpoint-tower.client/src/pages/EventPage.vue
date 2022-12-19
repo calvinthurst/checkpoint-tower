@@ -1,43 +1,42 @@
 <template>
   <div v-if="events" class="col-11">
-    <div class="row  m-1 justify-content-around cover-img rounded" :style="`background-image:url(${events.coverImg});`
+    <div class="row  m-1 justify-content-center cover-img rounded" :style="`background-image:url(${events.coverImg});`
     ">
       <div class="col-12">
-        <div class="row   justify-content-between">
+        <div class="row   justify-content-center">
 
-          <button v-if="account.id == events.creatorId && events.isCanceled == false" type="button"
-            class="btn col-2 bg-dark elevation-3 text-primary m-2 opacity-75" data-bs-toggle="modal"
-            data-bs-target="#exampleModal">
-            Edit Event
-          </button>
-          <EventForm />
-          <div v-if="events.isCanceled == true"
-            class="col-2 rounded bg-dark elevation-3 text-primary m-2 text-center  opacity-75">
+          <div v-if="events.isCanceled == true || !events.capacity"
+            class="col-2 rounded bg-light elevation-3 text-black m-2 text-center  ">
             EVENT CANCELED OR SOLD OUT
           </div>
           <button v-else-if="account.id && !myTicket" type="button"
-            class="btn col-2 bg-dark elevation-3 text-primary m-2  opacity-75" v-on:click="createTicket()">
+            class="btn col-2 bg-light elevation-3 text-black m-2  " v-on:click="createTicket()">
             Get Ticket
           </button>
-          <button v-else-if="account.id" type="button"
-            class="btn col-2 bg-dark elevation-3 text-primary m-2  opacity-75" @click="deleteTicket(myTicket)">
+          <button v-else-if="account.id" type="button" class="btn col-2 bg-light elevation-3 text-black m-2  "
+            @click="deleteTicket(myTicket.id)">
             Get Rid of Ticket
           </button>
+          <button v-if="account.id == events.creatorId && events.isCanceled == false" type="button"
+            class="btn col-2 bg-light elevation-3 text-black m-2 " data-bs-toggle="modal"
+            data-bs-target="#eventFormModal">
+            Edit Event
+          </button>
+          <EventForm />
 
         </div>
       </div>
-      <div class="bg-tint col-10 text-grey">
-        <h2>{{ events.name }}</h2>
-        <h5>{{ events.description }}</h5>
+      <div class="bg-tint col-12 rounded text-black">
+        <div class="fs-2">{{ events.name }}</div>
+        <div class="fs-4">{{ events.description }}</div>
         <p>This event is {{ time }}</p>
         <p>Spots Left: {{ events.capacity }}</p>
         <img v-for="t in ticket" :src="t.profile.picture" :alt="t.profile.name" class="ticket-pic rounded-circle">
       </div>
-      <div class="col-2">
-
-        <div class="btn bg-light text-primary  opacity-90" @click="cancelEvent(events.id)">
-          <button v-if="account.id == events.creatorId && events.isCanceled == false" type="button"
-            class="btn bg-light text-primary " alt="Cancel Event">Cancel Your Event Here
+      <div class="col-8 offset-4">
+        <div v-if="account.id == events.creatorId && events.isCanceled == false" class="btn bg-light text-black "
+          @click="cancelEvent(events.id)">
+          <button type="button" class="btn bg-light text-black " alt="Cancel Event">Cancel Your Event Here
           </button>
           <i class="mdi mdi-cancel "></i>
         </div>
@@ -46,7 +45,7 @@
   </div>
 
   <div class="col-11">
-    <div class="row  justify-content-around">
+    <div class="row justify-content-center">
       <CommentForm />
       <div v-if="!comments" class="row  justify-content-around">
         <div class="col-11 card rounded bg-light text-body-bg fs-3 m-1">
@@ -158,6 +157,10 @@ export default {
 
 
 <style lang="scss" scoped>
+.text-black {
+  color: rgb(36, 36, 36);
+}
+
 .ticket-pic {
   height: 5vh;
   object-fit: cover;

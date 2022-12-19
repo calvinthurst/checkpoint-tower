@@ -7,8 +7,8 @@
     </div>
     <div class="col-11">
       <div class="row justify-content-around">
-        <button v-if="account.id" type="button" class="col-3 btn bg-dark elevation-3 text-body-bg m-2"
-          data-bs-toggle="modal" data-bs-target="#exampleModal">
+        <button v-if="account.id" type="button" class="col-3 btn bg-dark elevation-3 text-secondary m-2"
+          data-bs-toggle="modal" data-bs-target="#eventFormModal">
           Create Event
         </button>
         <EventForm />

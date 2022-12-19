@@ -20,7 +20,7 @@
           Manage Account
         </div>
       </router-link>
-      <div class=" text-light selectable text-center mb-2 fw-bold" @click="logout">
+      <div class=" text-grey back rounded selectable text-center mb-2 fw-bold" @click="logout">
         <i class="mdi mdi-logout"></i>
         logout
       </div>
@@ -49,5 +49,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+.back {
+  background-color: rgba(0, 0, 0, 0.605);
+}
 </style>

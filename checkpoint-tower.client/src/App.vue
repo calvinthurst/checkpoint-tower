@@ -5,7 +5,7 @@
   <main>
     <router-view />
   </main>
-  <footer class="bg-primary col-11 text-light fs-4 m-0 p-2 text-center">
+  <footer class="bg-footer col-11 text-black fs-4 m-0 p-2 text-center">
     Made for big ballers
   </footer>
 </template>
@@ -36,5 +36,13 @@ footer {
   display: grid;
   place-content: center;
   height: 43px;
+}
+
+.bg-footer {
+  background-color: rgb(223, 251, 223);
+}
+
+.text-black {
+  color: rgb(48, 48, 48);
 }
 </style>
